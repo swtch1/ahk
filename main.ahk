@@ -37,18 +37,6 @@ Return
 	Send {LShift down}{Insert}{LShift up}	
 Return
 
-;; Run the VPN
-;^!v::
-;	run powershell c:\Python36\python.exe 'c:/important_files/scripts/vpn.py'
-;Return
-
-;; Duplicate tab
-^+Insert::
-	Send !d^c^t
-	Sleep 150
-	Send ^v{Enter}
-return
-
 ;; Close tab
 !x::
 	Send ^{F4}
@@ -102,20 +90,15 @@ F3::
 	WinMove, ahk_class PX_WINDOW_CLASS, , -1231, 464, 1238, 1087
 Return
 
-;; Bring all terminal windows to the front.
-;;
-
 ;; SnippingTool
 PrintScreen::Run "C:\Windows\System32\SnippingTool.exe"
 
-;; Media controls.
-+ScrollLock::Send {Media_Prev}
-ScrollLock::Send {Media_Next}
+;; Media controls
 Pause::Send {Media_Play_Pause}
-;^PgUp::Send {Volume_Up}
-;^PgDn::Send {Volume_Down}
-^Home::Send {Volume_Up}
-^End::Send {Volume_Down}
+^Left::Send {Media_Prev}
+^Right::Send {Media_Next}
+^Up::Send {Volume_Up}
+^Down::Send {Volume_Down}
 
 ;; Bring PyCharm to front
 F9::
@@ -141,25 +124,8 @@ F10::
 	}
 return
 
-;; Setup .kitchen.local.yml
-;;F11::
-;;	SendInput, cp .kitchen-scalr.yml .kitchen.local.yml;sed -ri "s|scalr_api_key_id:.*|scalr_api_key_id: 'APIKRCC730U2J66MURG0'|" .kitchen.local.yml;sed -ri "s|scalr_api_key_secret:.*|scalr_api_key_secret: 'AWIH1q03eXX2Qz0tzM36mzxaxjAA/qjTHe2jAUcg'|" .kitchen.local.yml
-;;Return
-
 ;; vi controls
-!h::
-   Send, {Left down}{Left up}
-Return
-
-!j::
-   Send, {Down down}{Down up}
-Return
-
-!k::
-   Send, {Up down}{Up up}
-Return
-
-!l::
-   Send, {Right down}{Right up}
-Return
-
+!h::Send, {Left}
+!j::Send, {Down}
+!k::Send, {Up}
+!l::Send, {Right}
